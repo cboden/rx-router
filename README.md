@@ -7,7 +7,7 @@ Example
 ```javascript
 var http   = require("http");
 var Rx     = require("rx");
-var router = require("../src/index.js");
+var router = require("rx-router");
 
 var defaultHandler = function(data) {
     var subject = new Rx.AsyncSubject();
