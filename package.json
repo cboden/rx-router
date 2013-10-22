@@ -1,0 +1,17 @@
+{
+    "name": "rx-router",
+    "version": "0.1.0",
+    "description": "An Rx based http router",
+    "author": "Joseph Moniz <joseph.moniz@gmail.com>",
+    "main": "./src/index.js",
+    "scripts": {
+        "test": "./node_modules/.bin/mocha --recursive"
+    },
+    "dependencies": {
+        "rx":        "2.*.*",
+        "existence": "0.2.*"
+    },
+    "devDependencies": {
+        "mocha": "1.9.0"
+    }
+}
