@@ -7,7 +7,7 @@ Example
 ```javascript
 var Rx           = require("rx");
 var RxHttpServer = require("rx-http-server");
-var router       = require("../src/index.js");
+var router       = require("rx-router");
 
 var defaultHandler = function(data) {
     data.result = "no match found";
