@@ -3,19 +3,16 @@ var Rx     = require("rx");
 var router = require("../src/index.js");
 
 var defaultHandler = function(data) {
-    var subject = new Rx.AsyncSubject();
     data.result = "no match found";
     return Rx.Observable.fromArray([data]);
 };
 
 var rootHandler = function(data) {
-    var subject = new Rx.AsyncSubject();
     data.result = "hello from root";
     return Rx.Observable.fromArray([data]);
 };
 
 var regexHandler = function(data) {
-    var subject = new Rx.AsyncSubject();
     data.result = "hello from regex";
     return Rx.Observable.fromArray([data]);
 };
