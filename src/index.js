@@ -90,16 +90,13 @@ var _matchPathString = function(request, path) {
 /**
  * The routing method
  *
- * @param Object http The http server object
- * @param Object routes The object containing the routes
  * @param Function fallback The fallback route handler
- * @return Observable
+ * @param Object routes The object containing the routes
+ * @return Function A function conforming to the shape of `flatMap()`
  */
-module.exports = function(http, routes, fallback) {
-    return Rx.Node.fromEvent(http, "request").map(function(args) {
-        return { request: args[0], response: args[1] };
-    }).flatMap(function(data) {
+module.exports = function(fallback, routes) {
+    return function(data) {
         var route = _router(data, routes, fallback);
         return route(data);
-    });
+    };
 };

@@ -5,9 +5,9 @@ A server http request router built with RxJS.
 Example
 -------
 ```javascript
-var http   = require("http");
-var Rx     = require("rx");
-var router = require("rx-router");
+var Rx           = require("rx");
+var RxHttpServer = require("rx-http-server");
+var router       = require("../src/index.js");
 
 var defaultHandler = function(data) {
     data.result = "no match found";
@@ -24,15 +24,15 @@ var regexHandler = function(data) {
     return Rx.Observable.fromArray([data]);
 };
 
-var server  = http.createServer();
-var results = router(server, {
+var server = new RxHttpServer();
+var routes = router(defaultHandler, {
     "GET": [
         ["/",           rootHandler],
         [/^\/test\/.+/, regexHandler]
     ]
-}, defaultHandler);
+});
 
-results.subscribe(function(data) {
+server.requests.flatMap(routes).subscribe(function(data) {
     data.response.writeHead(200, {"Content-Type": "text/plain"});
     data.response.end(data.result);
 });
