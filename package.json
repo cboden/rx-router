@@ -1,6 +1,6 @@
 {
     "name": "rx-router",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "An Rx based http router",
     "author": "Joseph Moniz <joseph.moniz@gmail.com>",
     "main": "./src/index.js",
