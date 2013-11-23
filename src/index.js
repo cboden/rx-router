@@ -1,5 +1,6 @@
-var Rx        = require("rx");
-var Existence = require("existence");
+var Rx   = require("rx");
+var Some = require("existence/some");
+var None = require("existence/none");
 
 /**
  * The internal routing method
@@ -26,9 +27,9 @@ var _router = function(data, routes, fallback) {
  */
 var _matchMethod = function(request, routes) {
     if (routes[request.method]) {
-        return new Existence(routes[request.method]);
+        return new Some(routes[request.method]);
     } else {
-        return new Existence(null);
+        return new None();
     }
 };
 
@@ -49,7 +50,7 @@ var _matchPath = function(request, optionalMethod) {
                     return tuple[1];
                 });
             });
-        }, new Existence());
+        }, new None());
     });
 };
 
@@ -63,12 +64,12 @@ var _matchPath = function(request, optionalMethod) {
 var _matchPathRegex = function(request, path) {
     if (path instanceof RegExp) {
         if (path.test(request.url)) {
-            return new Existence(path);
+            return new Some(path);
         } else {
-            return new Existence();
+            return new None();
         }
     } else {
-        return new Existence();
+        return new None();
     }
 };
 
@@ -81,9 +82,9 @@ var _matchPathRegex = function(request, path) {
  */
 var _matchPathString = function(request, path) {
     if (path == request.url) {
-        return new Existence(path);
+        return new Some(path);
     } else {
-        return new Existence();
+        return new None();
     }
 };
 
