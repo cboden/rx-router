@@ -9,7 +9,7 @@
         "test": "./node_modules/.bin/mocha --recursive"
     },
     "dependencies": {
-        "rx":             "2.*.*",
+        "rx":             "~4.1.0",
         "rx-http-server": "0.1.*",
         "existence":      "1.0.*"
     },
