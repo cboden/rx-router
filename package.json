@@ -10,7 +10,7 @@
     },
     "dependencies": {
         "rx":             "~4.1.0",
-        "rx-http-server": "0.1.*",
+        "rx-http-server": "github:cboden/rx-http-server#new-ver",
         "existence":      "1.0.*"
     },
     "devDependencies": {
